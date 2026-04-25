@@ -5,13 +5,7 @@ export const FOOTER_LINKS: FooterLink[] = [
     name: 'GitHub',
     hoverText: 'Open Sourcing',
     icon: 'icons/github.svg',
-    url: 'https://github.com/Nandanannn24',
-  },
-  {
-    name: 'Spotify',
-    hoverText: 'Curated playlists',
-    icon: 'icons/spotify.svg',
-    url: 'https://open.spotify.com/user/31ibes3qfcva3jfl4wavlc6cxmmq?si=bS3KW_OpTi--jbXDuC4p_g',
+    url: 'https://github.com/nandanannn24',
   },
   {
     name: 'Instagram',
@@ -20,15 +14,15 @@ export const FOOTER_LINKS: FooterLink[] = [
     url: 'https://www.instagram.com/_nandanannn/',
   },
   {
-    name: 'Portofolio',
-    hoverText: 'View Portofolio',
+    name: 'Portfolio',
+    hoverText: 'View 3D Portfolio',
     icon: 'icons/file.svg',
-    url: 'https://portofolio-nandanannn.netlify.app/',
+    url: 'https://nanda-psi.vercel.app',
   },
   {
     name: 'Our Project',
-    hoverText: 'Go to Our Project',
+    hoverText: 'Project Showcase API',
     icon: 'icons/chevrons-left-right.svg',
-    url: 'https://nandanannn.netlify.app/',
-  }
+    url: 'http://localhost/project-showcase-api',
+  },
 ];

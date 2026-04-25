@@ -50,7 +50,7 @@ const TextWindow = () => {
           scale={[1, -1, 1]}
           fontSize={0.8}
           rotation={[0, -Math.PI / 2, -Math.PI / 2]}>
-          STREAMER GAME MOBILE
+          FULLSTACK DEVELOPER
         </Text>
 
         <Text color="white" anchorX="left" anchorY="middle"
@@ -77,7 +77,7 @@ const TextWindow = () => {
           fontSize={0.8}
           position={[0, 0, -0.6]}
           rotation={[0, -Math.PI / 2, -Math.PI / 2]}>
-          UPN &quot;VETERAN&quot; JAWA TIMUR
+          UPN VETERAN JAWA TIMUR
         </Text>
       </group>
     </group>

@@ -1,4 +1,3 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
@@ -14,15 +13,12 @@ const vercettiFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "landing page nanda",
-  description: "A frontend developer by profession, a creative at heart.",
-  icons: {
-    icon: "/icons/nanda.webp",
-  },
-  keywords: "Nanda, Frontend Engineer, React Developer, Three.js, Creative Developer, Web Development, Angular, JavaScript, TypeScript, Portfolio",
-  authors: [{ name: "Nanda" }],
-  creator: "Nanda",
-  publisher: "Nanda",
+  title: "Priyoga Listyo Ananda - Portfolio",
+  description: "Fullstack & Backend Developer, IT Solution enthusiast from UPN Veteran Jawa Timur.",
+  keywords: "Priyoga, Nanda, Fullstack Developer, Backend Developer, React Developer, Next.js, TypeScript, Portfolio, UPN Veteran Jawa Timur",
+  authors: [{ name: "Priyoga Listyo Ananda" }],
+  creator: "Priyoga Listyo Ananda",
+  publisher: "Priyoga Listyo Ananda",
   formatDetection: {
     email: false,
     address: false,
@@ -39,21 +35,19 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Nanda - Frontend Engineer",
-    description: "Frontend engineer by profession, creative at heart.",
-    url: "https://portofolio-nandanannn.netlify.app",
-    siteName: "Nanda's Portfolio",
-    locale: "en_US",
+    title: "Priyoga Listyo Ananda - Portfolio",
+    description: "Fullstack Developer & IT Solution enthusiast from UPN Veteran Jawa Timur.",
+    url: "https://nanda-psi.vercel.app",
+    siteName: "Priyoga's Portfolio",
+    locale: "id_ID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nanda - Frontend Engineer",
-    description: "Frontend engineer by profession, creative at heart.",
+    title: "Priyoga Listyo Ananda - Portfolio",
+    description: "Fullstack Developer & IT Solution enthusiast from UPN Veteran Jawa Timur.",
   },
-  verification: {
-    google: "GsRYY-ivL0F_VKkfs5KAeToliqz0gCrRAJKKmFkAxBA",
-  },
+  verification: {},
 };
 
 export const viewport: Viewport = {
@@ -69,13 +63,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overscroll-y-none">
+    <html lang="id" className="overscroll-y-none">
       <body
         className={`${soriaFont.variable} ${vercettiFont.variable} font-sans antialiased`}
       >
         {children}
       </body>
-      <GoogleAnalytics gaId={'G-7WD4HM3XRE'} />
     </html>
   );
 }

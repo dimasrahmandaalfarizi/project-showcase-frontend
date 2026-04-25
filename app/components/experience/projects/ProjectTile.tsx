@@ -7,6 +7,7 @@ import * as THREE from "three";
 
 import { usePortalStore } from "@stores";
 import { Project } from "@types";
+import DifficultyToggle from "./DifficultyToggle";
 
 interface ProjectTileProps {
   project: Project;
@@ -22,6 +23,12 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
   const hoverAnimRef = useRef<gsap.core.Timeline | null>(null);
   const [hovered, setHovered] = useState(false);
   const isProjectSectionActive = usePortalStore((state) => state.activePortalId === "projects");
+
+  const [explanation, setExplanation] = useState(project.description);
+
+  useEffect(() => {
+    setExplanation(project.description);
+  }, [project.id]);
 
   const titleProps = useMemo(() => ({
     font: "./soria-font.ttf",
@@ -59,7 +66,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       .to((mesh as THREE.Mesh).material, { opacity: hovered ? 0.95 : 0.3 }, 0)
       .to(mesh.position, { y: hovered ? 1 : 0 }, 0);
 
-    if (project.url) {
+    if (project.liveUrl || project.githubUrl) {
       hoverAnimRef.current
         .to(button.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
         .to(button.position, { z: hovered ? 0.3 : -1 }, 0);
@@ -82,13 +89,38 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     }
   }, [isProjectSectionActive]);
 
+  const trackInteraction = (projectId: number, type: string) => {
+    const API_BASE_URL = 'http://localhost/project-showcase-api';
+    fetch(`${API_BASE_URL}/api/analytics/interaction`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        projectId: projectId,
+        interactionType: type,
+        timestamp: new Date().toISOString(),
+      }),
+    }).catch((err) => console.error("Tracking Error:", err));
+  };
+
+  const handlePointerOver = () => {
+    if (!isMobile && isProjectSectionActive) {
+      setHovered(true);
+      trackInteraction(project.id, "hover");
+    }
+  };
+
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
-    if (!project.url) return;
+    if (!project.liveUrl && !project.githubUrl) return;
     const button = e.eventObject;
     gsap.to(button.position, { z: 0, duration: 0.1 })
       .then(() => gsap.to(button.position, { z: 0.3, duration: 0.3 }));
-    setTimeout(() => window.open(project.url, '_blank'), 50);
+    
+    trackInteraction(project.id, "click");
+    
+    setTimeout(() => window.open(project.liveUrl || project.githubUrl, '_blank'), 50);
   };
 
   return (
@@ -96,7 +128,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       position={position}
       rotation={rotation}
       onClick={onClick}
-      onPointerOver={() => !isMobile && isProjectSectionActive && setHovered(true)}
+      onPointerOver={handlePointerOver}
       onPointerOut={() => !isMobile && isProjectSectionActive && setHovered(false)}>
       <group ref={projectRef}>
         <mesh>
@@ -124,18 +156,22 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
             {...subtitleProps}
             position={[-0.7, 0.2, 0]}
             fontSize={0.3}>
-            {project.date.toUpperCase()}
+            {project.techStack?.[0]?.toUpperCase() || 'PROJ'}
           </Text>
         </group>
         <Text
           {...subtitleProps}
           maxWidth={3.8}
           position={[-1.9, 2.3, 0.1]}
-          // scale={[0, 0, 1]}
-          fontSize={0.2}>
-          {project.subtext}
+          fontSize={0.17}>
+          {explanation}
         </Text>
-        {project.url && (
+        <DifficultyToggle 
+          projectId={project.id} 
+          visible={hovered} 
+          onExplain={setExplanation} 
+        />
+        {(project.liveUrl || project.githubUrl) && (
           <group
             position={[1.3, -0.6, -1]}
             scale={[0, 0, 1]}
