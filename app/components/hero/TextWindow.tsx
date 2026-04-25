@@ -32,7 +32,7 @@ const TextWindow = () => {
         {...fontProps}
         scale={[1, -1, 1]}
         rotation={[0, 0, -Math.PI / 2]}>
-        PRIYOGA LISTYO ANANDA
+        DIMAS RAHMANDA AL FARIZI
       </Text>
 
       <Text color="white" anchorX="right" anchorY="middle"
@@ -41,7 +41,7 @@ const TextWindow = () => {
         fontSize={1.3}
         position={[0.12, 0, -1.4]}
         rotation={[0, 0, -Math.PI / 2]}>
-        BACKEND. IT SOLUTION
+        BACKEND. IOT. IT SOLUTIONS
       </Text>
 
       <group position={[-0.45, 0, -0.3]}>
@@ -59,7 +59,7 @@ const TextWindow = () => {
           fontSize={0.8}
           position={[0, 0, -0.6]}
           rotation={[0, -Math.PI / 2, -Math.PI / 2]}>
-          FRONTEND DEVELOPER
+          BACKEND DEVELOPER
         </Text>
       </group>
 

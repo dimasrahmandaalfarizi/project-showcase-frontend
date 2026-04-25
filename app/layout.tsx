@@ -13,12 +13,12 @@ const vercettiFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Priyoga Listyo Ananda - Portfolio",
-  description: "Fullstack & Backend Developer, IT Solution enthusiast from UPN Veteran Jawa Timur.",
-  keywords: "Priyoga, Nanda, Fullstack Developer, Backend Developer, React Developer, Next.js, TypeScript, Portfolio, UPN Veteran Jawa Timur",
-  authors: [{ name: "Priyoga Listyo Ananda" }],
-  creator: "Priyoga Listyo Ananda",
-  publisher: "Priyoga Listyo Ananda",
+  title: "Dimas Rahmanda Al Farizi - Portfolio",
+  description: "Fullstack & Backend Developer passionate about IoT and IT Solutions.",
+  keywords: "Dimas, Rahmanda, Backend Developer, Fullstack Developer, IoT, Node.js, React Native, TypeScript, Portfolio, UPN Veteran Jawa Timur",
+  authors: [{ name: "Dimas Rahmanda Al Farizi" }],
+  creator: "Dimas Rahmanda Al Farizi",
+  publisher: "Dimas Rahmanda Al Farizi",
   formatDetection: {
     email: false,
     address: false,
@@ -35,17 +35,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Priyoga Listyo Ananda - Portfolio",
-    description: "Fullstack Developer & IT Solution enthusiast from UPN Veteran Jawa Timur.",
-    url: "https://nanda-psi.vercel.app",
-    siteName: "Priyoga's Portfolio",
+    title: "Dimas Rahmanda Al Farizi - Portfolio",
+    description: "Fullstack & Backend Developer passionate about IoT and IT Solutions.",
+    url: "https://github.com/dimasrahmandaalfarizi",
+    siteName: "Dimas's Portfolio",
     locale: "id_ID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Priyoga Listyo Ananda - Portfolio",
-    description: "Fullstack Developer & IT Solution enthusiast from UPN Veteran Jawa Timur.",
+    title: "Dimas Rahmanda Al Farizi - Portfolio",
+    description: "Fullstack & Backend Developer passionate about IoT and IT Solutions.",
   },
   verification: {},
 };

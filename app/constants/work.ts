@@ -5,7 +5,7 @@ export const WORK_TIMELINE: WorkTimelinePoint[] = [
   {
     point: new THREE.Vector3(0, 0, 0),
     year: '2024',
-    title: 'SMKN 3 Buduran',
+    title: 'Lulus SMA/SMK',
     subtitle: 'Lulus',
     position: 'right',
   },
@@ -18,9 +18,9 @@ export const WORK_TIMELINE: WorkTimelinePoint[] = [
   },
   {
     point: new THREE.Vector3(1, 0, -10),
-    year: '2025 - Sekarang',
-    title: 'Nexus Omni',
-    subtitle: 'Founder — RT/RW Net',
+    year: '2024 - Sekarang',
+    title: 'Freelance & Projects',
+    subtitle: 'Backend · Fullstack · IoT',
     position: 'right',
   },
 ]
