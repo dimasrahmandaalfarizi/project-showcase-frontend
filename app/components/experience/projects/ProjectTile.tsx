@@ -46,7 +46,12 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     if (!projectRef.current) return;
     hoverAnimRef.current?.kill();
 
-    const [mesh, title, dateGroup, textBox, button] = projectRef.current.children;
+    // Children order: mesh, title, dateGroup, textBox, [button? only if URL exists]
+    const children = projectRef.current.children;
+    const [mesh, title, dateGroup, textBox] = children;
+    const button = children[4]; // may be undefined if no URL
+
+    if (!mesh || !title || !dateGroup || !textBox) return;
 
     hoverAnimRef.current = gsap.timeline();
     hoverAnimRef.current
@@ -59,14 +64,13 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       }, 0)
       .to(title.position, { y: hovered ? 0.7 : -0.8 }, 0)
       .to(textBox.position, { y: hovered ? 0.7 : 0 }, 0)
-      // .to(textBox.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
       .to(textBox, { fillOpacity: hovered ? 1 : 0, duration: 0.4 }, 0)
       .to(dateGroup.position, { y: hovered ? 2.6 : 1.4 }, 0)
       .to(mesh.scale, { y: hovered ? 2 : 1 }, 0)
       .to((mesh as THREE.Mesh).material, { opacity: hovered ? 0.95 : 0.3 }, 0)
       .to(mesh.position, { y: hovered ? 1 : 0 }, 0);
 
-    if (project.liveUrl || project.githubUrl) {
+    if (button && (project.liveUrl || project.githubUrl)) {
       hoverAnimRef.current
         .to(button.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
         .to(button.position, { z: hovered ? 0.3 : -1 }, 0);

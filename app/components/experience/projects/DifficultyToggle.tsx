@@ -20,6 +20,7 @@ export default function DifficultyToggle({ projectId, visible, onExplain }: Prop
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ projectId, difficulty })
       });
+      if (!response.ok) throw new Error(`API error: ${response.status}`);
       const data = await response.json();
       if (data.explanation) {
         onExplain(data.explanation);
