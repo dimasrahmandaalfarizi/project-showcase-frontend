@@ -1,7 +1,6 @@
 import { Html } from "@react-three/drei";
 import { useState } from "react";
-
-const API_BASE_URL = 'http://localhost/project-showcase-api';
+import { API_BASE_URL } from "@constants";
 
 interface Props {
   projectId: number;

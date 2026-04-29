@@ -8,6 +8,7 @@ import * as THREE from "three";
 import { usePortalStore } from "@stores";
 import { Project } from "@types";
 import DifficultyToggle from "./DifficultyToggle";
+import { API_BASE_URL } from "@constants";
 
 interface ProjectTileProps {
   project: Project;
@@ -94,7 +95,6 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
   }, [isProjectSectionActive]);
 
   const trackInteraction = (projectId: number, type: string) => {
-    const API_BASE_URL = 'http://localhost/project-showcase-api';
     fetch(`${API_BASE_URL}/api/analytics/interaction`, {
       method: "POST",
       headers: {
@@ -127,6 +127,11 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     setTimeout(() => window.open(project.liveUrl || project.githubUrl, '_blank'), 50);
   };
 
+  const texture = useMemo(() => {
+    if (!project.previewImageUrl) return null;
+    return new THREE.TextureLoader().load(project.previewImageUrl);
+  }, [project.previewImageUrl]);
+
   return (
     <group
       position={position}
@@ -137,7 +142,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       <group ref={projectRef}>
         <mesh>
           <planeGeometry args={[4.2, 2, 1]} />
-          <meshBasicMaterial color="#FFF" transparent opacity={0.3}/>
+          <meshBasicMaterial color={texture ? "#FFF" : "#FFF"} transparent opacity={0.3} map={texture} />
           {/* <meshPhysicalMaterial transmission={1} roughness={0.3} /> */}
           <Edges color="black" lineWidth={1.5} />
         </mesh>

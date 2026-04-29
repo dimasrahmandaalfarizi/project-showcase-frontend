@@ -4,8 +4,7 @@ import ProjectTile from "./ProjectTile";
 
 import { usePortalStore } from "@stores";
 import { Project } from "@types";
-
-const API_BASE_URL = 'http://localhost/project-showcase-api';
+import { API_BASE_URL } from "@constants";
 
 const ProjectsCarousel = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
