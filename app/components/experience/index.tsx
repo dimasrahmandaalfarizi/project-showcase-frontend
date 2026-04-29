@@ -8,6 +8,10 @@ import GridTile from "./GridTile";
 import Projects from "./projects";
 import Work from "./work";
 
+const Placeholder = ({ text }: { text: string }) => (
+  <Text color="white" fontSize={1} position={[0, 0, 0]}>{text}</Text>
+);
+
 const Experience = () => {
   const titleRef = useRef<THREE.Group>(null);
   const groupRef = useRef<THREE.Group>(null);
@@ -20,9 +24,15 @@ const Experience = () => {
     color: 'white',
   };
 
-  useFrame((sate, delta) => {
+  useFrame((state, delta) => {
     const d = data.range(0.8, 0.2);
     const e = data.range(0.7, 0.2);
+
+    if (!isActive) {
+      // Pan camera left and right based on cursor position to see all options
+      const targetX = state.pointer.x * (isMobile ? 4 : 6);
+      state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, targetX, 3, delta);
+    }
 
     if (groupRef.current && !isActive) {
       groupRef.current.position.y = d > 0 ? -1 : -30;
@@ -74,6 +84,20 @@ const Experience = () => {
             textAlign='right'
             position={new THREE.Vector3(isMobile ? 1 : 2, 0, 0)}>
             <Projects />
+          </GridTile>
+          <GridTile title='SKILLS & TOOLS'
+            id="skills"
+            color='#b9c6d6'
+            textAlign='left'
+            position={new THREE.Vector3(isMobile ? -3 : -6, 0, 0)}>
+            <Placeholder text="Coming Soon" />
+          </GridTile>
+          <GridTile title='CONTACT ME'
+            id="contact"
+            color='#bdd1e3'
+            textAlign='right'
+            position={new THREE.Vector3(isMobile ? 3 : 6, 0, 0)}>
+            <Placeholder text="Coming Soon" />
           </GridTile>
         </group>
       </group>
