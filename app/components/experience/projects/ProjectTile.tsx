@@ -127,9 +127,21 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
     setTimeout(() => window.open(project.liveUrl || project.githubUrl, '_blank'), 50);
   };
 
-  const texture = useMemo(() => {
-    if (!project.previewImageUrl) return null;
-    return new THREE.TextureLoader().load(project.previewImageUrl);
+  // Load texture with a separate LoadingManager to avoid triggering
+  // drei's DefaultLoadingManager which is monitored by Hero's useProgress().
+  // Without this, texture loading causes: "Cannot update Hero while
+  // rendering ProjectTile" React error.
+  const [texture, setTexture] = useState<THREE.Texture | null>(null);
+  useEffect(() => {
+    if (!project.previewImageUrl) return;
+    const manager = new THREE.LoadingManager();
+    const loader = new THREE.TextureLoader(manager);
+    loader.load(
+      project.previewImageUrl,
+      (loadedTexture) => setTexture(loadedTexture),
+      undefined,
+      () => setTexture(null)
+    );
   }, [project.previewImageUrl]);
 
   return (
@@ -142,7 +154,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       <group ref={projectRef}>
         <mesh>
           <planeGeometry args={[4.2, 2, 1]} />
-          <meshBasicMaterial color={texture ? "#FFF" : "#FFF"} transparent opacity={0.3} map={texture} />
+          <meshBasicMaterial color="#FFF" transparent opacity={0.3} map={texture ?? undefined} />
           {/* <meshPhysicalMaterial transmission={1} roughness={0.3} /> */}
           <Edges color="black" lineWidth={1.5} />
         </mesh>
