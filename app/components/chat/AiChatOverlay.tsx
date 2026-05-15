@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { API_BASE_URL } from '@constants';
 
 export default function AiChatOverlay() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +27,7 @@ export default function AiChatOverlay() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/ai/chat`, {
+      const response = await fetch(`/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg, history: messages })
