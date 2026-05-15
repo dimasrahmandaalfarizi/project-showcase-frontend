@@ -17,6 +17,7 @@ const Experience = () => {
   const groupRef = useRef<THREE.Group>(null);
   const data = useScroll();
   const isActive = usePortalStore((state) => !!state.activePortalId);
+  const activePortalId = usePortalStore((state) => state.activePortalId);
 
   const fontProps = {
     font: "./soria-font.ttf",
@@ -29,9 +30,26 @@ const Experience = () => {
     const e = data.range(0.7, 0.2);
 
     if (!isActive) {
-      // Pan camera left and right based on cursor position to see all options
-      const targetX = state.pointer.x * (isMobile ? 4 : 6);
+      // Only pan camera left and right when fully in the Experience section (after door animation)
+      const panFactor = data.range(0.8, 0.1); // 0 during door animation, 1 at Experience tiles
+      const targetX = state.pointer.x * (isMobile ? 4 : 6) * panFactor;
       state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, targetX, 3, delta);
+    } else {
+      // Zoom in on the active portal
+      let targetX = 0;
+      switch (activePortalId) {
+        case 'work': targetX = isMobile ? -1 : -2; break;
+        case 'projects': targetX = isMobile ? 1 : 2; break;
+        case 'skills': targetX = isMobile ? -3 : -6; break;
+        case 'contact': targetX = isMobile ? 3 : 6; break;
+      }
+      
+      // Move X to center the active tile
+      state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, targetX, 4, delta);
+      // Move Y closer to the floor (-41.5) to zoom in from the scroll height (-37)
+      state.camera.position.y = THREE.MathUtils.damp(state.camera.position.y, -39.5, 4, delta);
+      // Reset rotation sway from ScrollWrapper
+      state.camera.rotation.y = THREE.MathUtils.damp(state.camera.rotation.y, 0, 4, delta);
     }
 
     if (groupRef.current && !isActive) {
