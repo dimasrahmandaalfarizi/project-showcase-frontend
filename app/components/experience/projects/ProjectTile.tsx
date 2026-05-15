@@ -10,6 +10,15 @@ import { Project } from "@types";
 import DifficultyToggle from "./DifficultyToggle";
 import { API_BASE_URL } from "@constants";
 
+// Fallback colors for tiles that have no preview image
+const FALLBACK_COLORS = [
+  '#1a1a2e', // deep navy
+  '#16213e', // midnight blue
+  '#0f3460', // dark steel blue
+  '#1b1b2f', // dark indigo
+  '#162447', // deep ocean
+];
+
 interface ProjectTileProps {
   project: Project;
   index: number;
@@ -154,9 +163,12 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       <group ref={projectRef}>
         <mesh>
           <planeGeometry args={[4.2, 2, 1]} />
-          <meshBasicMaterial color="#FFF" transparent opacity={0.3} map={texture ?? undefined} />
-          {/* <meshPhysicalMaterial transmission={1} roughness={0.3} /> */}
-          <Edges color="black" lineWidth={1.5} />
+          {texture ? (
+            <meshBasicMaterial color="#FFF" transparent opacity={0.95} map={texture} />
+          ) : (
+            <meshBasicMaterial color={FALLBACK_COLORS[index % FALLBACK_COLORS.length]} transparent opacity={0.85} />
+          )}
+          <Edges color={texture ? "black" : "#4a4a6a"} lineWidth={1.5} />
         </mesh>
         <Text
           {...titleProps}

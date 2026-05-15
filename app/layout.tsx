@@ -13,7 +13,7 @@ const vercettiFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dimas Rahmanda Al Farizi - Portfolio",
+  title: "Dimas Rahmanda",
   description: "Fullstack & Backend Developer passionate about IoT and IT Solutions.",
   keywords: "Dimas, Rahmanda, Backend Developer, Fullstack Developer, IoT, Node.js, React Native, TypeScript, Portfolio, UPN Veteran Jawa Timur",
   authors: [{ name: "Dimas Rahmanda Al Farizi" }],
@@ -35,16 +35,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Dimas Rahmanda Al Farizi - Portfolio",
+    title: "Dimas Rahmanda",
     description: "Fullstack & Backend Developer passionate about IoT and IT Solutions.",
     url: "https://github.com/dimasrahmandaalfarizi",
-    siteName: "Dimas's Portfolio",
+    siteName: "Dimas Rahmanda",
     locale: "id_ID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dimas Rahmanda Al Farizi - Portfolio",
+    title: "Dimas Rahmanda",
     description: "Fullstack & Backend Developer passionate about IoT and IT Solutions.",
   },
   verification: {},
