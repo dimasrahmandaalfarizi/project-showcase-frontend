@@ -4,13 +4,11 @@ import { usePortalStore } from "@stores";
 import { useRef } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from 'three';
+import Contact from "./contact";
 import GridTile from "./GridTile";
 import Projects from "./projects";
+import Skills from "./skills";
 import Work from "./work";
-
-const Placeholder = ({ text }: { text: string }) => (
-  <Text color="white" fontSize={1} position={[0, 0, 0]}>{text}</Text>
-);
 
 const Experience = () => {
   const titleRef = useRef<THREE.Group>(null);
@@ -105,17 +103,17 @@ const Experience = () => {
           </GridTile>
           <GridTile title='SKILLS & TOOLS'
             id="skills"
-            color='#b9c6d6'
+            color='#0f1d30'
             textAlign='left'
             position={new THREE.Vector3(isMobile ? -3 : -6, 0, 0)}>
-            <Placeholder text="Coming Soon" />
+            <Skills />
           </GridTile>
           <GridTile title='CONTACT ME'
             id="contact"
-            color='#bdd1e3'
+            color='#06040a'
             textAlign='right'
             position={new THREE.Vector3(isMobile ? 3 : 6, 0, 0)}>
-            <Placeholder text="Coming Soon" />
+            <Contact />
           </GridTile>
         </group>
       </group>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#1a1208"/>
+      <stop offset="100%" stop-color="#06040a"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <circle cx="70"  cy="80"  r="0.7" fill="white" opacity="0.4"/>
+  <circle cx="150" cy="50"  r="0.5" fill="white" opacity="0.3"/>
+  <circle cx="600" cy="70"  r="0.6" fill="white" opacity="0.4"/>
+  <circle cx="720" cy="140" r="0.8" fill="white" opacity="0.3"/>
+  <circle cx="750" cy="400" r="0.5" fill="white" opacity="0.4"/>
+  <circle cx="700" cy="650" r="0.7" fill="white" opacity="0.3"/>
+  <circle cx="450" cy="750" r="0.5" fill="white" opacity="0.4"/>
+  <circle cx="200" cy="730" r="0.7" fill="white" opacity="0.3"/>
+  <circle cx="60"  cy="580" r="0.5" fill="white" opacity="0.4"/>
+  <circle cx="80"  cy="300" r="0.7" fill="white" opacity="0.3"/>
+  <circle cx="380" cy="760" r="0.5" fill="white" opacity="0.4"/>
+  <circle cx="660" cy="500" r="0.6" fill="white" opacity="0.3"/>
+
+  <!-- Top ornamental crest -->
+  <polygon points="400,88 432,128 400,168 368,128" fill="none" stroke="#c4a265" stroke-width="1.5" opacity="0.8"/>
+  <polygon points="400,98 420,128 400,158 380,128"  fill="none" stroke="#c4a265" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="400" cy="128" r="4" fill="#c4a265" opacity="0.7" filter="url(#glow)"/>
+  <line x1="240" y1="128" x2="368" y2="128" stroke="#c4a265" stroke-width="0.8" opacity="0.5"/>
+  <line x1="432" y1="128" x2="560" y2="128" stroke="#c4a265" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="240" cy="128" r="2.5" fill="#c4a265" opacity="0.5"/>
+  <circle cx="560" cy="128" r="2.5" fill="#c4a265" opacity="0.5"/>
+
+  <!-- Name -->
+  <text x="400" y="238" text-anchor="middle" fill="#e8d8b8" font-family="Georgia,serif" font-size="36" letter-spacing="5" opacity="0.95">DIMAS RAHMANDA</text>
+
+  <!-- Role -->
+  <text x="400" y="272" text-anchor="middle" fill="#9a8070" font-family="Georgia,serif" font-size="13" letter-spacing="7" font-style="italic">Fullstack Developer</text>
+
+  <!-- Divider with diamond -->
+  <line x1="160" y1="300" x2="375" y2="300" stroke="#c4a265" stroke-width="0.7" opacity="0.5"/>
+  <polygon points="400,293 408,300 400,307 392,300" fill="#c4a265" opacity="0.7"/>
+  <line x1="425" y1="300" x2="640" y2="300" stroke="#c4a265" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- GitHub -->
+  <text x="400" y="370" text-anchor="middle" fill="#7a8a9a" font-family="Georgia,serif" font-size="11" letter-spacing="4">GITHUB</text>
+  <text x="400" y="398" text-anchor="middle" fill="#b8c8d8" font-family="Georgia,serif" font-size="15" letter-spacing="0.5">github.com/dimasrahmandaalfarizi</text>
+
+  <!-- Thin separator -->
+  <line x1="290" y1="418" x2="510" y2="418" stroke="#c4a265" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- LinkedIn -->
+  <text x="400" y="446" text-anchor="middle" fill="#7a8a9a" font-family="Georgia,serif" font-size="11" letter-spacing="4">LINKEDIN</text>
+  <text x="400" y="474" text-anchor="middle" fill="#b8c8d8" font-family="Georgia,serif" font-size="15" letter-spacing="0.5">Dimas Rahmanda Al Farizi</text>
+
+  <!-- Thin separator -->
+  <line x1="290" y1="494" x2="510" y2="494" stroke="#c4a265" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Education -->
+  <text x="400" y="522" text-anchor="middle" fill="#7a8a9a" font-family="Georgia,serif" font-size="11" letter-spacing="4">EDUCATION</text>
+  <text x="400" y="550" text-anchor="middle" fill="#b8c8d8" font-family="Georgia,serif" font-size="14" letter-spacing="1">UPN Veteran Jawa Timur</text>
+
+  <!-- Thin separator -->
+  <line x1="290" y1="570" x2="510" y2="570" stroke="#c4a265" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Location -->
+  <text x="400" y="598" text-anchor="middle" fill="#7a8a9a" font-family="Georgia,serif" font-size="11" letter-spacing="4">LOCATION</text>
+  <text x="400" y="626" text-anchor="middle" fill="#b8c8d8" font-family="Georgia,serif" font-size="14" letter-spacing="1">Surabaya, Indonesia</text>
+
+  <!-- Bottom wave ornament -->
+  <path d="M180,680 Q290,662 400,680 Q510,698 620,680" fill="none" stroke="#c4a265" stroke-width="0.8" opacity="0.4"/>
+  <path d="M200,690 Q310,672 400,690 Q500,708 600,690" fill="none" stroke="#c4a265" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Bottom quote -->
+  <text x="400" y="730" text-anchor="middle" fill="#6a5040" font-family="Georgia,serif" font-size="11" letter-spacing="2" font-style="italic">Open to opportunities &amp; collaboration</text>
+
+  <!-- Border frames -->
+  <rect x="8"  y="8"  width="784" height="784" fill="none" stroke="#c4a265" stroke-width="1.5" opacity="0.6"/>
+  <rect x="18" y="18" width="764" height="764" fill="none" stroke="#c4a265" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Corner marks -->
+  <path d="M8,40 L8,8 L40,8"       fill="none" stroke="#c4a265" stroke-width="2.5" opacity="0.8"/>
+  <path d="M760,8 L792,8 L792,40"  fill="none" stroke="#c4a265" stroke-width="2.5" opacity="0.8"/>
+  <path d="M8,760 L8,792 L40,792"  fill="none" stroke="#c4a265" stroke-width="2.5" opacity="0.8"/>
+  <path d="M760,792 L792,792 L792,760" fill="none" stroke="#c4a265" stroke-width="2.5" opacity="0.8"/>
+</svg>
